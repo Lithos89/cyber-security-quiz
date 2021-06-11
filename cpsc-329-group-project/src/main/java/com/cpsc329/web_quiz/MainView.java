@@ -4,8 +4,11 @@ import com.vaadin.flow.component.Key;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.button.ButtonVariant;
 import com.vaadin.flow.component.dependency.CssImport;
+import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.notification.Notification;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
+import com.vaadin.flow.component.tabs.Tab;
+import com.vaadin.flow.component.tabs.Tabs;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.server.PWA;
@@ -30,7 +33,8 @@ import org.springframework.beans.factory.annotation.Autowired;
         enableInstallPrompt = false)
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
-public class MainView extends VerticalLayout {
+@CssImport(value = "./styles/vaadin-tabs-styles.css", themeFor = "vaadin-tabs")
+public class MainView extends Div {
 
     /**
      * Construct a new Vaadin view.
@@ -40,6 +44,26 @@ public class MainView extends VerticalLayout {
      * @param service The message service. Automatically injected Spring managed bean.
      */
     public MainView(@Autowired GreetService service) {
+    	
+    	Tabs tabs = new Tabs();
+    	tabs.setWidth("100%");
+    	
+    	Tab gameTab = new Tab("CYBERSECURITY");
+    	gameTab.addClassName("main-tab");
+    	Tab sitePurposeTab = new Tab("What is this site for?");
+    	sitePurposeTab.addClassName("secondary-tab");
+    	Tab cybersecurityContentTab = new Tab("What is Cybersecurity?");
+    	cybersecurityContentTab.addClassName("secondary-tab");
+    	Tab contentTab = new Tab("Information");
+    	contentTab.addClassName("secondary-tab");
+    	Tab aboutTab = new Tab("About Us");
+//    	aboutTab.addClassName("secondary-tab");
+    	tabs.setOrientation(Tabs.Orientation.HORIZONTAL);
+    	tabs.add(gameTab, sitePurposeTab, cybersecurityContentTab, contentTab, aboutTab);
+    	
+    	add(tabs);
+    	
+ 
 
         // Use TextField for standard text input
         TextField textField = new TextField("Your name");

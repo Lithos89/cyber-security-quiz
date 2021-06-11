@@ -1,0 +1,12 @@
+:host {
+	background: white;
+}
+
+[part="tabs"] ::slotted(vaadin-tab) {
+	color: #AAAAAA;
+}
+
+[part="tabs"] ::slotted(vaadin-tab[selected]) {
+	color: #3F4652;
+	font-weight: bold;
+}
