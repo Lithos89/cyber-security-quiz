@@ -5,7 +5,49 @@
 */
 
 /* Example: CSS class name to center align the content . */
-.centered-content {
-  margin: 0 auto;
+
+
+.body {
+	height: 100%;
 }
 
+
+.main-view {
+	height: 100%;
+}
+
+
+/* About Stuff */
+
+.about-background {
+	height: 90%;
+	background: url("https://i0.wp.com/boingboing.net/wp-content/uploads/2018/05/cool-background1.png?fit=1&resize=620%2C4000&ssl=1") no-repeat center center/cover;
+}
+
+.about-content {
+	position: relative;
+	top: 20%;
+	background: rgba(20, 20, 20, 0.4);
+	text-align: center;
+	margin: 0 100px;
+	padding-top: 70px;
+	border-radius: 5px;
+}
+
+
+.profile-container {
+	display: flex;
+	text-align: center;
+	justify-content: space-around;
+	padding: 20px 0 90px;
+}
+
+.profile-image {
+	border-radius: 50%;
+}
+
+.profile-name {
+	margin-top: 0;
+	padding: 20px 0 50px;
+	color: white;
+}
