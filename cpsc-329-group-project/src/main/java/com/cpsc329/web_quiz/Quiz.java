@@ -2,8 +2,13 @@ package com.cpsc329.web_quiz;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Dictionary;
+import java.util.List;
 import java.util.Random;
 import java.util.Timer;
+import java.util.stream.Collectors;
 
 import com.vaadin.flow.component.ClickEvent;
 import com.vaadin.flow.component.Component;
@@ -19,7 +24,7 @@ import com.vaadin.flow.component.textfield.TextField;
 public class Quiz extends Div {
 	
 	//Question Bank
-		String[] questions = {
+		String[] questionsRaw = {
 							"Which of the three malware techniques are self-replicating?",
 							"What is a rootkit?",
 							"A firewall is... ",
@@ -41,7 +46,7 @@ public class Quiz extends Div {
 
 		
 		//Answer Bank
-		String[][] options = {
+		String[][] optionsRaw = {
 							{" Trojan horse", " Virus ", " Worm and virus", "trojan horse and virus"},
 							{"A type of malware that completely destroys the computer.", "A type of malware that is downloaded in a kit.", " A type of malware that gives the attacker the privileges of an administrator.", " A type of malware that is downloaded when a user clicks on a malicious link."},
 							{"A type of malware that stops items from going into your computer or internal network.", "Is used to monitor what should go in or out of a computer or internal network. It is a 100% safeguard from malware.", "It is a malware that can �burn� all of your files and corrupt them.", "Is used to monitor what should go in or out of a computer or internal network. It is not 100% safeguard."},
@@ -62,7 +67,7 @@ public class Quiz extends Div {
 		};
 		
 		//Correct Choices
-		char[] answers = {
+		Character[] answersRaw = {
 						'C',
 						'C',
 						'D',
@@ -104,7 +109,27 @@ public class Quiz extends Div {
 	TextField number_right = new TextField();
 	Button nq = new Button("Next Question");
 	
+	List<Integer> randomizedIndexes = RandomizeSet.genRandomizedIndexes(questionsRaw.length);
+	
+	List<String> questions;
+	List<String[]> options;
+	List<Character> answers;
+	
 	public Quiz() {
+		
+		List<String> cleanQuestions = Arrays.asList(questionsRaw);
+		List<String[]> cleanOptions = Arrays.asList(optionsRaw);
+		List<Character> cleanAnswers = Arrays.asList(answersRaw);
+		
+		
+		
+		
+		questions  = RandomizeSet.randomize(cleanQuestions, randomizedIndexes);
+		options = RandomizeSet.randomize(cleanOptions, randomizedIndexes);
+		answers = RandomizeSet.randomize(cleanAnswers, randomizedIndexes);
+		
+		
+		
 		
 		
 		frame.setWidth("540px");
@@ -252,11 +277,11 @@ public class Quiz extends Div {
 		
 		else {
 			textfield.setValue("QUESTION " + (index+1));
-			textarea.setValue(questions[index]);
-			answer_labelA.setText(options[index][0]);
-			answer_labelB.setText(options[index][1]);
-			answer_labelC.setText(options[index][2]);
-			answer_labelD.setText(options[index][3]);
+			textarea.setValue(questions.get(index));
+			answer_labelA.setText(options.get(index)[0]);
+			answer_labelB.setText(options.get(index)[1]);
+			answer_labelC.setText(options.get(index)[2]);
+			answer_labelD.setText(options.get(index)[3]);
 
 		}
 	}
@@ -269,7 +294,7 @@ public class Quiz extends Div {
 		
 		if(e.getSource() == chooseA) {
 			answer = 'A';
-			if(answer == answers[index]) {
+			if(answer == answers.get(index)) {
 				right_answers++;
 				//answer_labelA.setForeground(new Color(255,0,0));
 			}
@@ -277,14 +302,14 @@ public class Quiz extends Div {
 
 		if(e.getSource() == chooseB) {
 			answer = 'B';
-			if(answer == answers[index]) {
+			if(answer == answers.get(index)) {
 				right_answers++;
 			}
 		}
 		
 		if(e.getSource() == chooseC) {
 			answer = 'C';
-			if(answer == answers[index]) {
+			if(answer == answers.get(index)) {
 				right_answers++;
 			}
 		}
@@ -292,7 +317,7 @@ public class Quiz extends Div {
 		if(e.getSource() == chooseD) {
 			answer = 'D';
 
-			if(answer == answers[index]) {
+			if(answer == answers.get(index)) {
 				right_answers++;			
 				
 			}
@@ -307,24 +332,24 @@ public class Quiz extends Div {
 		chooseC.setEnabled(false);
 		chooseD.setEnabled(false);
 		
-		if(answers[index] == 'A')
+		if(answers.get(index) == 'A')
 			answer_labelA.addClassName("answer--correct");
-		else if (answers[index] != 'A' && answer != answers[index])
+		else if (answers.get(index) != 'A' && answer != answers.get(index))
 			answer_labelA.addClassName("answer--incorrect");
 		
-		if(answers[index] == 'B')
+		if(answers.get(index) == 'B')
 			answer_labelB.addClassName("answer--correct");
-		else if (answers[index] != 'B' && answer != answers[index])
+		else if (answers.get(index) != 'B' && answer != answers.get(index))
 			answer_labelB.addClassName("answer--incorrect");
 		
-		if(answers[index] == 'C')
+		if(answers.get(index) == 'C')
 			answer_labelC.addClassName("answer--correct");
-		else if (answers[index] != 'C' && answer != answers[index]) 
+		else if (answers.get(index) != 'C' && answer != answers.get(index)) 
 			answer_labelC.addClassName("answer--incorrect");
 		
-		if(answers[index] == 'D')
+		if(answers.get(index) == 'D')
 			answer_labelD.addClassName("answer--correct");
-		else if (answers[index] != 'D' && answer != answers[index])
+		else if (answers.get(index) != 'D' && answer != answers.get(index))
 			answer_labelD.addClassName("answer--incorrect");
 		
 	}
@@ -348,5 +373,47 @@ public class Quiz extends Div {
 		number_right.setValue("("+right_answers+"/"+TQuestions+")");
 		frame.add(number_right);
 		
+	}
+	
+	public static class RandomizeSet {
+		static List<Integer> genRandomizedIndexes(int n) {
+			int[] standardIndex = createIndexArray(n);
+			List<Integer> randomizedIndexes = new ArrayList<>(n);
+			for ( int i = 0; i < n; i++) {
+				int num = (int) Math.floor(Math.random() * (float) (n - i)); 
+				int selected = standardIndex[num];
+				System.out.println(selected);
+				System.out.println(randomizedIndexes);
+				randomizedIndexes.add(selected);
+				if (standardIndex.length > 0)
+					standardIndex = Arrays.stream(standardIndex).filter(value -> value != selected).toArray();
+				System.out.println(Arrays.toString(standardIndex));
+				
+			}
+
+			return randomizedIndexes;
+			
+			
+		}
+		
+		public static <T> List<T> randomize(List<T> values, List<Integer> randomizedIndexes) {
+			int n = randomizedIndexes.size();
+			List<T> randomizedSet = new ArrayList<>(n);
+			
+			for (int i = 0; i < n; i++) {
+				randomizedSet.add(values.get(randomizedIndexes.get(i)));
+			}
+			
+			return randomizedSet;
+				
+		}
+	 
+		static int[] createIndexArray(int n) {
+		    int[] standardIndex = new int[n];
+		    for (int i = 0; i < n; i++) {
+		        standardIndex[i] = i;
+		    }
+		    return standardIndex;
+		}
 	}
 }
