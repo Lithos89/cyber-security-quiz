@@ -25,7 +25,7 @@ public class NavigationBar extends Tabs {
     	cybersecurityContentTab.addClassName("secondary-tab");
     	Tab malwareContentTab = new Tab(new RouterLink("What is Malware?", Malware.class));
     	malwareContentTab.addClassName("secondary-tab");
-    	Tab aboutTab = new Tab(new RouterLink("About Us", About.class));
+    	Tab aboutTab = new Tab(new RouterLink("Creators", About.class));
     	aboutTab.addClassName("secondary-tab");
     	setOrientation(Tabs.Orientation.HORIZONTAL);
     	add(gameTab, sitePurposeTab, cybersecurityContentTab, malwareContentTab, aboutTab);

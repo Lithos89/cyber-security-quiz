@@ -36,9 +36,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 @CssImport("./styles/shared-styles.css")
 @CssImport(value = "./styles/vaadin-text-field-styles.css", themeFor = "vaadin-text-field")
 @CssImport(value = "./styles/vaadin-tabs-styles.css", themeFor = "vaadin-tabs")
+@CssImport(value = "./styles/vaadin-image-styles.css", themeFor = "vaadin-html-image")
 public class MainView extends Div implements RouterLayout {
 
-    public MainView(@Autowired GreetService service) {
+    public MainView() {
     	
     	setClassName("main-view");
     	

@@ -8,19 +8,20 @@ import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.html.Image;
 import com.vaadin.flow.router.Route;
 
-@Route(value="about", layout=MainView.class)
+@Route(value="created-by", layout=MainView.class)
 @CssImport("./styles/shared-styles.css")
 public class About extends Div {
 	
 	
 	public About() {
+		Div background = new Div();
 		
-		setClassName("about-background");
+		background.setClassName("about-background");
 		
 		Div contentDiv = new Div();
 		contentDiv.addClassName("about-content");
 		
-		H1 label = new H1("ABOUT US");
+		H1 label = new H1("CREATED BY");
 		
 		Div profileContainer = new Div();
 		profileContainer.addClassName("profile-container");
@@ -33,7 +34,7 @@ public class About extends Div {
 		
 		contentDiv.add(label, profileContainer);
 		
-		add(contentDiv);
+		add(background, contentDiv);
 		
 //		add()
 	}

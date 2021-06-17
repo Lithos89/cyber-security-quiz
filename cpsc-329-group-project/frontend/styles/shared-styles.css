@@ -11,25 +11,57 @@
 	height: 100%;
 }
 
+.centered-content {
+	max-width: 1170px;
+	margin: auto;
+	justify-content: center;
+}
+
+.description-content {
+	
+}
+
 
 .main-view {
 	height: 100%;
 }
 
+img {
+	max-width: 40vw;
+}
 
-/* About Stuff */
+/* Site Description Section*/
 
-.about-background {
-	height: 90%;
+.background {
+	z-index: -2;
+	position: fixed;
+	/* height: 100vh; */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0; 
 	background: url("https://i0.wp.com/boingboing.net/wp-content/uploads/2018/05/cool-background1.png?fit=1&resize=620%2C4000&ssl=1") no-repeat center center/cover;
 }
 
+/* About Section */
+
+.about-background {
+	z-index: -2;
+	position: fixed;
+	/* height: 100vh; */
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0; 
+	background: url("https://i0.wp.com/boingboing.net/wp-content/uploads/2018/05/cool-background1.png?fit=1&resize=620%2C4000&ssl=1") no-repeat center center/cover;}
+
 .about-content {
 	position: relative;
-	top: 20%;
+	top: 10vh;
 	background: rgba(20, 20, 20, 0.4);
 	text-align: center;
-	margin: 0 100px;
+	margin-left: 100px;
+	margin-right: 100px;
 	padding-top: 70px;
 	border-radius: 5px;
 }
