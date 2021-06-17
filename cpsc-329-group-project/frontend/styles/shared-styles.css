@@ -83,3 +83,31 @@ img {
 	padding: 20px 0 50px;
 	color: white;
 }
+
+/* Game Stuff */
+
+.option-container {
+	display: flex;
+	width: 100%;
+}
+
+.option {
+	display: inline-block;
+	width: 100%;
+}
+
+.option-label {
+	display: inline-block;
+}
+
+.answer--default {
+	color: rgb(51,204,255);
+}
+
+.answer--correct {
+	color: rgb(25,255,0);
+}
+
+.answer--incorrect {
+	color: rgb(255, 0, 0);
+}
