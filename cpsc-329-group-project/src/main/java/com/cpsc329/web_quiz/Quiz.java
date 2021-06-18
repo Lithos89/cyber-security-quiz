@@ -176,7 +176,7 @@ public class Quiz extends Div {
 		
 		textarea.addClassName("question-label");
 		
-		feedback.addClassName("question-label");
+		feedback.addClassName("feedback-label");
 		
 		chooseA.addClickListener(this::actionPerformed);
 		chooseA.addClassName("option");
@@ -225,6 +225,8 @@ public class Quiz extends Div {
 		
 		frame.add(textfield);
 		frame.add(textarea);
+		
+		frame.add(feedback);
 		
 		optionA = new Div(answer_labelA, chooseA);
 		optionA.setClassName("option-container");
@@ -339,7 +341,7 @@ public class Quiz extends Div {
 	
 	public void results() {
 		
-		frame.remove(optionA, optionB, optionC, optionD, nq);
+		frame.remove(optionA, optionB, optionC, optionD, nq, textarea);
 		
 		result = (int)((right_answers/(double)TQuestions)*100);
 		
@@ -354,9 +356,7 @@ public class Quiz extends Div {
 		textfield.setText("Your Score");
 
 		number_right.setText("("+right_answers+"/"+TQuestions+")");
-		frame.add(number_right);
-		frame.add(feedback);
-		
+		frame.add(number_right);		
 	}
 	
 	public static class RandomizeSet {
