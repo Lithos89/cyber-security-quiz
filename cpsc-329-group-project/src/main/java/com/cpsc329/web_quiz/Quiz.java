@@ -345,11 +345,11 @@ public class Quiz extends Div {
 		
 		result = (int)((right_answers/(double)TQuestions)*100);
 		
-		if (result < 5)
+		if (right_answers < 5)
 			feedback.setText("You need to review the Cybersecurity and Malware content more thoroughly and retry the quiz.");
-		else if(result < 10 && result > 5)
+		else if(right_answers < 10 && result > 5)
 			feedback.setText("You did well but there is always room for improvement.");
-		else if(result == 10)
+		else if(right_answers == 10)
 			feedback.setText("You did excellent!");
 		
 		

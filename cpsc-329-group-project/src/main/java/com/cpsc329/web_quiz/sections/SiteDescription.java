@@ -6,7 +6,9 @@ import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H2;
 import com.vaadin.flow.component.html.H4;
+import com.vaadin.flow.component.html.ListItem;
 import com.vaadin.flow.component.html.Paragraph;
+import com.vaadin.flow.component.html.UnorderedList;
 import com.vaadin.flow.router.Route;
 
 @Route(value="site-description", layout= MainView.class)
@@ -38,5 +40,15 @@ public class SiteDescription extends Div {
 		
 		contentDiv.add(titleLabel, promo, instructions, description);
 		add(backgroundDiv, contentDiv);
+		
+		H2 rulesLabel = new H2("Quiz Game Rules:");
+		
+		UnorderedList rules = new UnorderedList(
+			new ListItem("Be sure to read the sections \"What is Cybersecurity?\" and \"What is Malware?\""),
+			new ListItem("Once you have reviewed the content then test your knowledge by taking this short quiz"),
+			new ListItem("Each question will have four possible answers, you need to pick the one correct answer. Good luck!")
+		);
+		
+		add(rulesLabel, rules);
 	}
 }
