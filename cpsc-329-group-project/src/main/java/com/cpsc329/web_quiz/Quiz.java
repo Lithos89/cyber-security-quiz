@@ -30,7 +30,22 @@ public class Quiz extends Div {
 							"Which of the following are assured ways to know if you have malware?",
 	                        "What is an antivirus software?",
 	                        "What does a keylogger do?",
-	                        "Why is it important to use security patches?"
+	                        "Why is it important to use security patches?",
+	                        "What does the CIA Triad stand for?",
+	                        "What type of backup does syncing refer to?",
+	                        "What makes a virtual drive backup safe?",
+	                        "What is the difference between phishing and spear phishing?",
+	                        "What are some negative impacts of Identity Theft?",
+	                        "What is whaling?",
+	                        "What are some important steps to follow when setting up your router?",
+	                        "What is an important precautionary measure in case of future data breaches?",
+	                        "What is the difference between full system backup and full data backup?",
+	                        "Why is it important to install antivirus on your computer systems?",
+	                        "What is data interception?",
+	                        "What is an example of data interception?",
+	                        "What is the man in the middle attack also known as?",
+	                        "What are incremental backups?",
+	                        "What is the best type of backup?"
 							
 		};
 
@@ -51,7 +66,22 @@ public class Quiz extends Div {
 	                        {"Slow computer", "System crashing", "Both of the above", "Neither as these can be cause by other reasons as well."},
 	                        {"Viruses that hide inside of legitimate applications.", "Application that is used to try to prevent, detect and remove malware.", "Extremely dangerous form of virus to which there is no removal.", "An update to the code of the operating system to fix bugs."},
 	                        {"Secures what you are typing by encrypting what you input on your keyboard.", "Disables the use of your keyboard.", "Program that helps you manage all your passwords.","Type of spyware that keeps track of everything that is typed."},
-	                        {"They update the code of applications or the operating system to fix bugs that could have been used by malware or attackers.", "They completely block malware from infecting your device.", "It's the way to remove malware already on your device.","It is not important as security patches are a type of malware."}
+	                        {"They update the code of applications or the operating system to fix bugs that could have been used by malware or attackers.", "They completely block malware from infecting your device.", "It's the way to remove malware already on your device.","It is not important as security patches are a type of malware."},
+	                        {"Canadian Intelligence Association", "Confidentiality, Integrity, Authentication", "California Institute of Algorithms", "Confidentiality, Integrity, Availability"},
+	                        {"Partial backups", "Incremental backups", "Continuous backups", "Differential backups"},
+	                        {"Encryption", "Strong password", "Secure antivirus", "Malware protection"},
+	                        {"Phishing is slow compared to spear phishing", "Phishing targets a wide range of people whereas spear phishing targets a specific individual or business", "Phishing mostly attacks elders whereas spear phishing attacks the youth", "There is no difference between phishing and spear phishing"},
+	                        {"Access to your bank account", "Creation of new credit cards under your name", "Setting up new mobile or utility accounts under your name", "All of the above"},
+	                        {"It’s a form of phishing that targets the seniors", "It’s a form of phishing that targets smaller businesses", "It’s a form of phishing that targets the fishing industry", "It is a form of phishing that targets executives or government officials"},
+	                        {"Create a unique wifi network name and password", "Make a password mandatory for accessing the network", "Create a guest network and never allow remote access to your router", "All of the above"},
+	                        {"Regularly backup your data", "Write down your passwords in a private notebook", "Email yourself your important data", "Use the default network passwords to have better protection"},
+	                        {"Nothing, they are both full backups", "Full data backup backs up only the data", "Full system backup backs up the operating system, settings, programs and data", "b and c are both correct"},
+	                        {"To enable two factor passwords", "To provide protection from external threats", "To keep your computer systems free of infectious viruses and bacteria", "To allow you to use easy passwords without losing protection"},
+	                        {"When hackers access your data and make changes that are beneficial to them", "When hackers intercept and listen to your phone calls", "When hackers intercept your data in the middle of being transmitted to the receiver", "Both a and c are correct"},
+	                        {"The man in the middle attack", "Eavesdropping attack", "Encryption attack", "Username and password attack"},
+	                        {"Syncing", "Proxying", "Installing", "Uploading"},
+	                        {"Backups that involve small increments of added security", "Backups that are done in small steps to speed things up", "Backups that are done to include the recently added or changed data", "Backups that are stored as smaller sections of a larger data"},
+	                        {"Differential backup as it includes any data that was recently added", "Full system backup as it backs up everything", "Virtual drive backup as it provides encrypted security", "Continuous backup as it is continuously backing up data"}
 
 
 		};
@@ -73,6 +103,21 @@ public class Quiz extends Div {
 						'B',
 						'D',
 						'A',
+						'D',
+						'C',
+						'A',
+						'B',
+						'D',
+						'D',
+						'D',
+						'A',
+						'D',
+						'B',
+						'D',
+						'A',
+						'B',
+						'C',
+						'B'
 		};
 	
 	//Facts
@@ -82,7 +127,7 @@ public class Quiz extends Div {
 	char answer;
 	int index;
 	int right_answers = 0;
-	int TQuestions = 5;
+	int TQuestions = 10;
 	int result;
 	
 	Div frame = new Div();

@@ -56,6 +56,8 @@ public class CyberSecurity extends Div {
 		
 		new Image("https://www.thebeijinger.com/sites/default/files/thebeijinger/blog-images/345221/internet-of-things.jpg", "Retrieved from https://www.thebeijinger.com/blog/2018/07/02/chinas-internet-things-manufacturers-are-reducing-costs-expense-our-privacy-and"),
 		
+		new Paragraph("Retrieved from https://www.thebeijinger.com/blog/2018/07/02/chinas-internet-things-manufacturers-are-reducing-costs-expense-our-privacy-and"),
+		
 		new H3("Learning about Impersonation, Data Interception and Data Theft"),
 		
 		new H4("Impersonation"),
@@ -79,6 +81,8 @@ public class CyberSecurity extends Div {
 		
 		new Image("https://www.social-engineer.com/wp-content/uploads/2020/12/smishing..jpg", "Retrieved from https://securityboulevard.com/2020/12/smishing-is-it-really-a-threat/"),
 		
+		new Paragraph("Retrieved from https://securityboulevard.com/2020/12/smishing-is-it-really-a-threat/"),
+		
 		new H4("Vishing"),
 		
 		new Paragraph("This is another form of phishing that is voice-based via POTS (plain old telephone service). There are attackers who still use the telephone as a means of illegally gaining access to people’s personal information such as SIN, bank account, usernames and passwords."),
@@ -95,6 +99,8 @@ public class CyberSecurity extends Div {
 		
 		new Image("https://phoenixnap.com/blog/wp-content/uploads/2019/03/example-of-mitm-attack-min.png", "Retrieved from https://phoenixnap.com/blog/man-in-the-middle-attacks-prevention"),
 		
+		new Paragraph("Retrieved from https://phoenixnap.com/blog/man-in-the-middle-attacks-prevention"),
+		
 		new H4("Data Theft"),
 		
 		new Paragraph("A lot of cyberattacks are driven to steal valuable personal information. The attackers main goal is to use that stolen information to steal or make money out of it. Personal stolen information can be used for identity theft or to sell identities. Attackers usually commit fraudulent activities such as accessing your bank accounts, creating new credit card and mobile phone accounts under you rname. Also, attackers often use personal information such as health related information or sensitive photos to blackmail people for money. Important stolen data that is completely erased from the owner’s computer are used for monetary gains through demanding ransom for the return of the compromised data."),
@@ -108,6 +114,8 @@ public class CyberSecurity extends Div {
 		new Paragraph("It is important to note that your computer devices should never be directly connected to your internet modem. Instead, the internet modem should be connected to a firewall and router, and then all of your computer devices should be connected to the firewall and router. This acts as a cyber-perimeter protection for all of your devices. The function of the firewall is to act as a barrier to anyone trying to access your internal devices such as computers, mobile phone, tablets, etc. However, it allows you as an internal user to request information from external sources and will not block those requests. It is important to regularly update your router or have it set up for automatic updates to have better protection."),
 		
 		new Image("https://technoadvantage.com/wp-content/uploads/2020/08/Firewalls.jpg", "Retrieved from https://technoadvantage.com/firewalls-101-hows-and-whys/"),
+		
+		new Paragraph("Retrieved from https://technoadvantage.com/firewalls-101-hows-and-whys/"),
 	
 		new H4("Some tips for better protection when setting up your router:"),
 		
@@ -124,11 +132,15 @@ public class CyberSecurity extends Div {
 		
 		new Image("https://blog.reasonsecurity.com/wp-content/uploads/2020/01/shutterstock_233997115-e1578907208622.jpg", "Retrieved from https://blog.reasonsecurity.com/2020/01/13/how-antivirus-protect-your-data/"),
 		
+		new Paragraph("Retrieved from https://blog.reasonsecurity.com/2020/01/13/how-antivirus-protect-your-data/"),
+		
 		new H4("Backup"),
 		
 		new Paragraph("This may not seem obvious but it is highly recommended to back up your data regularly. If at any time you are exposed to external threats you will have a piece of mind knowing you have a backup copy. Remember to keep the external harddrive storing your backup in a secure place to prevent theft or loss."),
 		
 		new Image("https://www.bluechipgulf.ae/wp-content/uploads/2020/01/img-data-backup-solutions.jpg", "Retrieved from https://www.bluechipgulf.ae/ups-generator-and-pdu-services-dubai/"),
+		
+		new Paragraph("Retrieved from https://www.bluechipgulf.ae/ups-generator-and-pdu-services-dubai/"),
 		
 		new H3("Different Types of Backup"),
 		
@@ -158,14 +170,8 @@ public class CyberSecurity extends Div {
 		
 		new H4("Virtual Drive Backups"),
 		
-		new Paragraph("This is a backup where the data is stored on an encrypted virtual drive. Encryption is a process that makes the data unreadable and can only be accessed with a key."),
-		
-		//Citations
-		new H2("Citations"),
-		
-		new Paragraph("Steinberg, Joseph. Cybersecurity for Dummies. Newark: Wiley, 2019. O’Reilly. https://learning.oreilly.com/library/view/cybersecurity-for-dummies/9781119560326/?sso_link=yes&sso_link_from=university-of-calgary"),
-		
-		new Paragraph("Rei Safavi-Naini. “Explorations in Information Security and Privacy”. CPSC329. June 2021. University of Calgary."));
+		new Paragraph("This is a backup where the data is stored on an encrypted virtual drive. Encryption is a process that makes the data unreadable and can only be accessed with a key.")
+		);
 		
 		setClassName("centered-content");
 	}

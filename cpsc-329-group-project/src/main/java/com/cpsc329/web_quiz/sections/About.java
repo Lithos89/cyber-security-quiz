@@ -26,10 +26,11 @@ public class About extends Div {
 		Div profileContainer = new Div();
 		profileContainer.addClassName("profile-container");
 		
-		String[] names = {"Eduard", "Homa", "Maham", "Moiz"};
+		String[][] creatorInfo = {{"Eduard", "https://source.unsplash.com/random/100x100/?jungle"}, {"Homa", "https://source.unsplash.com/random/100x100/?mountain"}, {"Maham", "https://source.unsplash.com/random/100x100/?river"}, {"Moiz", "https://source.unsplash.com/random/100x100/?beach"}};
 		
-		for (String name : names) {
-			profileContainer.add(CreateProfile(name, "https://dummyimage.com/100x100/000/fff"));
+		
+		for (String[] info : creatorInfo) {
+			profileContainer.add(CreateProfile(info[0], info[1]));
 		}
 		
 		contentDiv.add(label, profileContainer);
@@ -42,7 +43,7 @@ public class About extends Div {
 	private Div CreateProfile(String name, String resPath) {
 		Div profile = new Div();
 		
-		Image image = new Image(resPath, "DummyImage");
+		Image image = new Image(resPath, "Image");
 		image.addClassName("profile-image");
 		
 		H3 nameLabel = new H3(name);

@@ -17,7 +17,7 @@ public class NavigationBar extends Tabs {
 		
     	setWidth("100%");
     	
-    	Tab gameTab = new Tab(new RouterLink("CYBERSECURITY", Home.class));
+    	Tab gameTab = new Tab(new RouterLink("QUIZ", Home.class));
     	gameTab.addClassName("main-tab");
     	Tab sitePurposeTab = new Tab(new RouterLink("What is this site?", SiteDescription.class));
     	sitePurposeTab.addClassName("secondary-tab");
