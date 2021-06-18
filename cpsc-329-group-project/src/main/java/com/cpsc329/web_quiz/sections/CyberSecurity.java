@@ -20,6 +20,12 @@ public class CyberSecurity extends Div {
 	
 	public CyberSecurity() {
 		
+		Div background = new Div();
+		
+		background.setClassName("about-background");
+		
+		add(background);
+		
 		add(
 		new H1("Cybersecurity"),
 		new H3("What is Cybersecurity"),

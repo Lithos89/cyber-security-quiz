@@ -40,7 +40,8 @@ img {
 	left: 0;
 	right: 0;
 	bottom: 0; 
-	background: url("https://i0.wp.com/boingboing.net/wp-content/uploads/2018/05/cool-background1.png?fit=1&resize=620%2C4000&ssl=1") no-repeat center center/cover;
+	opacity: 0.3;
+	background: url("https://img.freepik.com/free-vector/digital-white-background-with-binary-code-numbers_1017-25335.jpg?size=626&ext=jpg") no-repeat center center/cover;
 }
 
 /* About Section */
@@ -53,7 +54,8 @@ img {
 	left: 0;
 	right: 0;
 	bottom: 0; 
-	background: url("https://i0.wp.com/boingboing.net/wp-content/uploads/2018/05/cool-background1.png?fit=1&resize=620%2C4000&ssl=1") no-repeat center center/cover;}
+	opacity: 0.3;
+	background: url("https://img.freepik.com/free-vector/digital-white-background-with-binary-code-numbers_1017-25335.jpg?size=626&ext=jpg") no-repeat center center/cover;}
 
 .about-content {
 	position: relative;
@@ -65,7 +67,6 @@ img {
 	padding-top: 70px;
 	border-radius: 5px;
 }
-
 
 .profile-container {
 	display: flex;
@@ -86,28 +87,72 @@ img {
 
 /* Game Stuff */
 
+.game-component {
+	max-width: 55vw;
+	justify-content: center;
+	padding: 2vh 5vh;
+	background: rgb(240, 240, 240);
+	border: 2px black solid;
+	border-radius: 5px;
+	margin: auto;
+	margin-top: 7vh;
+}
+
+.game-frame {
+	padding: 0;
+	margin: 0;
+	justify-content: center;
+}
+
+.question-number--label {
+	display: block;
+	text-align: center;
+	editable: false;
+	padding: 0.5rem;
+	font-size: 2rem;
+}
+
+.question-label {
+	display: block;
+	padding: 2rem 0;
+	font-size: 1.3rem;
+}
+
 .option-container {
-	display: flex;
+	padding: 0.5rem 0;
 	width: 100%;
+	display: flex;
+	height: 4rem;
 }
 
 .option {
+	flex: 1;
 	display: inline-block;
-	width: 100%;
+	height: 100%;
 }
 
 .option-label {
+	flex: 8;
+	width: 100%;
+	height: 100%;
 	display: inline-block;
+	font-weight: bold;
+	justify-items: center;
 }
 
 .answer--default {
-	color: rgb(51,204,255);
+	color: inherit;
 }
 
 .answer--correct {
-	color: rgb(25,255,0);
+	color: #037d50;
 }
 
 .answer--incorrect {
-	color: rgb(255, 0, 0);
+	color: #e60000;
+}
+
+.score-display {
+	display: block;
+	text-align: center;
 }

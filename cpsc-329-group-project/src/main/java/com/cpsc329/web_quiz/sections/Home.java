@@ -10,6 +10,11 @@ import com.vaadin.flow.router.Route;
 public class Home extends Div {
 	
 	public Home() {
+		Div background = new Div();
+		
+		background.setClassName("about-background");
+		
+		add(background);
 		add(new Quiz());
 	}
 }

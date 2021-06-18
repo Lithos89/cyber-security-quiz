@@ -1,23 +1,14 @@
 package com.cpsc329.web_quiz;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Dictionary;
 import java.util.List;
-import java.util.Random;
-import java.util.Timer;
-import java.util.stream.Collectors;
 
 import com.vaadin.flow.component.ClickEvent;
-import com.vaadin.flow.component.Component;
-import com.vaadin.flow.component.ComponentEventListener;
-import com.vaadin.flow.component.Tag;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.html.Div;
 import com.vaadin.flow.component.html.Label;
-import com.vaadin.flow.component.textfield.TextArea;
+import com.vaadin.flow.component.html.Span;
 import com.vaadin.flow.component.textfield.TextField;
 
 
@@ -30,11 +21,11 @@ public class Quiz extends Div {
 							"A firewall is... ",
 							"Which of the following is not true regarding protecting yourself from malware:",
 							"This is a program that is harmful that disguises itself as a legitimate program. Usually, it is downloaded by users onto their computer without them realizing what they have downloaded. When the user runs the program, the program can cause damage.",
-							"What is the name of the malware that takes over the user�s machine to uses their resources to mine for digital currency for their profits?",
+							"What is the name of the malware that takes over the user's machine to uses their resources to mine for digital currency for their profits?",
 							"Which type of attack uses a botnet to attack a server by pushing it to its limit to deny access to users?",
 							"Which of the following is not a method of making yourself safer from malware?",
 							"Which type of malware did the ILOVEYOU malware use?",
-							"The ILOVEYOUMALWARE turned 20 years old in 2020. The impact it had was very high. In fact, it is estimated that ____% of computers connected to the internet were infected in the world and it resulted in $_____ billion US in the aftermath of the malware.  Which numbers correspond to the blanks.",
+							"The ILOVEYOUMALWARE turned 20 years old in 2020. The impact it had was very high. In fact, it is estimated that ____% of computers connected to the internet were infected in the world and it resulted in $_____ billion US in the aftermath of the malware. Which numbers correspond to the blanks.",
 							"What is adware?",
 							"Which of the following are assured ways to know if you have malware?",
 	                        "What is an antivirus software?",
@@ -42,26 +33,25 @@ public class Quiz extends Div {
 	                        "Why is it important to use security patches?"
 							
 		};
-		
 
 		
 		//Answer Bank
 		String[][] optionsRaw = {
-							{" Trojan horse", " Virus ", " Worm and virus", "trojan horse and virus"},
-							{"A type of malware that completely destroys the computer.", "A type of malware that is downloaded in a kit.", " A type of malware that gives the attacker the privileges of an administrator.", " A type of malware that is downloaded when a user clicks on a malicious link."},
-							{"A type of malware that stops items from going into your computer or internal network.", "Is used to monitor what should go in or out of a computer or internal network. It is a 100% safeguard from malware.", "It is a malware that can �burn� all of your files and corrupt them.", "Is used to monitor what should go in or out of a computer or internal network. It is not 100% safeguard."},
-							{"Don�t reuse your password on multiple sites.", "You can�t open links from unknown senders", "It is always ok to open links from people you know.", "Both a and c"},
+							{"Trojan horse", "Virus", "Worm and virus", "Trojan horse and virus"},
+							{"A type of malware that completely destroys the computer.", "A type of malware that is downloaded in a kit.", "A type of malware that gives the attacker the privileges of an administrator.", " A type of malware that is downloaded when a user clicks on a malicious link."},
+							{"A type of malware that stops items from going into your computer or internal network.", "Is used to monitor what should go in or out of a computer or internal network. It is a 100% safeguard from malware.", "It is a malware that can \"burn\" all of your files and corrupt them.", "Is used to monitor what should go in or out of a computer or internal network. It is not 100% safeguard."},
+							{"Don't reuse your password on multiple sites.", "You can't open links from unknown senders", "It is always ok to open links from people you know.", "Both a and c"},
 							{"Trojan horse", "Malware", "Virus", "Spider"},
 						    {"Bitcoin digger", "Cyrptominer", "MoneyMaker", "CyrptoCoin"}, 
 	                        {"DsDO", "DSod", "DDoS", "Dd0S"}, 
 	                        {"Security patch", "Firewall", "Keylogger", "Antivirus software"},
 	                        {"Trojan", "Virus", "Worm", "All of the above"},
 	                        {"20 and 10", "10 and 10", "10 and 20", "14 and 16"},
-	                        {"Malware that uses the computers resource for mining cryptocurrency.", "Malware that causes pop up ads to encourage users to download another type of malware or make money for the creator. ", "Malware that holds a computer as a hostage by encrypting the user�s data and demanding a ransom.�,�Tricks users into thinking they are hacked and scare them into doing things such as buying a fake application."},
+	                        {"Malware that uses the computers resource for mining cryptocurrency.", "Malware that causes pop up ads to encourage users to download another type of malware or make money for the creator.", "Malware that holds a computer as a hostage by encrypting the user's data and demanding a ransom.","Tricks users into thinking they are hacked and scare them into doing things such as buying a fake application."},
 	                        {"Slow computer", "System crashing", "Both of the above", "Neither as these can be cause by other reasons as well."},
 	                        {"Viruses that hide inside of legitimate applications.", "Application that is used to try to prevent, detect and remove malware.", "Extremely dangerous form of virus to which there is no removal.", "An update to the code of the operating system to fix bugs."},
 	                        {"Secures what you are typing by encrypting what you input on your keyboard.", "Disables the use of your keyboard.", "Program that helps you manage all your passwords.","Type of spyware that keeps track of everything that is typed."},
-	                        {"They update the code of applications or the operating system to fix bugs that could have been used by malware or attackers.", "They completely block malware from infecting your device.", "It�s the way to remove malware already on your device.","It is not important as security patches are a type of malware."}
+	                        {"They update the code of applications or the operating system to fix bugs that could have been used by malware or attackers.", "They completely block malware from infecting your device.", "It's the way to remove malware already on your device.","It is not important as security patches are a type of malware."}
 
 
 		};
@@ -96,8 +86,8 @@ public class Quiz extends Div {
 	int result;
 	
 	Div frame = new Div();
-	TextField textfield = new TextField();
-	TextArea textarea = new TextArea();
+	Span textfield = new Span();
+	Span textarea = new Span();
 	Button chooseA = new Button("A");
 	Button chooseB = new Button("B");
 	Button chooseC = new Button("C");
@@ -106,7 +96,11 @@ public class Quiz extends Div {
 	Label answer_labelB = new Label();
 	Label answer_labelC = new Label();
 	Label answer_labelD = new Label();
-	TextField number_right = new TextField();
+	Span number_right = new Span();
+	Div optionA;
+	Div optionB;
+	Div optionC;
+	Div optionD;
 	Button nq = new Button("Next Question");
 	
 	List<Integer> randomizedIndexes = RandomizeSet.genRandomizedIndexes(questionsRaw.length);
@@ -116,6 +110,8 @@ public class Quiz extends Div {
 	List<Character> answers;
 	
 	public Quiz() {
+		
+		setClassName("game-component");
 		
 		List<String> cleanQuestions = Arrays.asList(questionsRaw);
 		List<String[]> cleanOptions = Arrays.asList(optionsRaw);
@@ -128,18 +124,16 @@ public class Quiz extends Div {
 		options = RandomizeSet.randomize(cleanOptions, randomizedIndexes);
 		answers = RandomizeSet.randomize(cleanAnswers, randomizedIndexes);
 		
-		
-		
-		
-		
-		frame.setWidth("540px");
-		frame.setHeight("540px");
-		
 //		Change frame background in css
 //		frame.getContentPane().setBackground(new Color(255,255,255));
+		frame.addClassName("game-frame");
 		
-		textfield.setWidth("650px");
-		textfield.setHeight("50px");
+		textfield.addClassName("question-number--label");
+		
+		textfield.getElement().setAttribute("contenteditable", false);
+		
+//		textfield.setWidth("650px");
+//		textfield.setHeight("50px");
 //		textfield.setBackground(new Color(15, 58, 109));
 //		textfield.setForeground(new Color(255,255,255));
 //		textfield.setFont(new Font("Tahoma", Font.PLAIN,25));
@@ -147,9 +141,11 @@ public class Quiz extends Div {
 //		textfield.setHorizontalAlignment(JTextField.CENTER);
 //		textfield.setEditable(false);
 		
+		textarea.addClassName("question-label");
+		
 //		textarea.setBounds(0,50,650,50);
-		textarea.setWidth("650px");
-		textarea.setHeight("50px");
+//		textarea.setWidth("650px");
+//		textarea.setHeight("50px");
 //		textarea.setLineWrap(true);
 //		textarea.setWrapStyleWord(true);
 //		textarea.setBackground(new Color(59, 89, 182));
@@ -214,6 +210,7 @@ public class Quiz extends Div {
 //		answer_labelD.setForeground(new Color(51,204,255));
 //		answer_labelD.setFont(new Font("Corbel", Font.PLAIN, 20));
 //
+		number_right.setClassName("score-display");
 //		number_right.setBounds(225,225,200,100);
 //		number_right.setBackground(new Color(25,25,25));
 //		number_right.setForeground(new Color(25,255,0));
@@ -226,7 +223,12 @@ public class Quiz extends Div {
 			answer_labelA.setClassName("answer--default");
 			answer_labelB.setClassName("answer--default");
 			answer_labelC.setClassName("answer--default");
-			answer_labelD.setClassName("answer--default");	
+			answer_labelD.setClassName("answer--default");
+			
+			answer_labelA.addClassName("option-label");
+			answer_labelB.addClassName("option-label");
+			answer_labelC.addClassName("option-label");
+			answer_labelD.addClassName("option-label");
 			
 			answer = ' ';
 			chooseA.setEnabled(true);
@@ -243,16 +245,16 @@ public class Quiz extends Div {
 		frame.add(textfield);
 		frame.add(textarea);
 		
-		Div optionA = new Div(answer_labelA, chooseA);
+		optionA = new Div(answer_labelA, chooseA);
 		optionA.setClassName("option-container");
 		
-		Div optionB = new Div(answer_labelB, chooseB);
+		optionB = new Div(answer_labelB, chooseB);
 		optionB.setClassName("option-container");
 		
-		Div optionC = new Div(answer_labelC, chooseC);
+		optionC = new Div(answer_labelC, chooseC);
 		optionC.setClassName("option-container");
 		
-		Div optionD = new Div(answer_labelD, chooseD);
+		optionD = new Div(answer_labelD, chooseD);
 		optionD.setClassName("option-container");
 		
 		frame.add(optionA);
@@ -276,8 +278,8 @@ public class Quiz extends Div {
 		}
 		
 		else {
-			textfield.setValue("QUESTION " + (index+1));
-			textarea.setValue(questions.get(index));
+			textfield.setText("QUESTION " + (index+1));
+			textarea.setText(questions.get(index));
 			answer_labelA.setText(options.get(index)[0]);
 			answer_labelB.setText(options.get(index)[1]);
 			answer_labelC.setText(options.get(index)[2]);
@@ -356,21 +358,13 @@ public class Quiz extends Div {
 	
 	public void results() {
 		
-		chooseA.setEnabled(false);
-		chooseA.setEnabled(false);
-		chooseA.setEnabled(false);
-		chooseA.setEnabled(false);
+		frame.remove(optionA, optionB, optionC, optionD, textarea, nq);
 		
 		result = (int)((right_answers/(double)TQuestions)*100);
 		
-		textfield.setValue("You're Score");
-		textarea.setValue("");
-		answer_labelA.setText("");
-		answer_labelB.setText("");
-		answer_labelC.setText("");
-		answer_labelD.setText("");
+		textfield.setText("Your Score");
 
-		number_right.setValue("("+right_answers+"/"+TQuestions+")");
+		number_right.setText("("+right_answers+"/"+TQuestions+")");
 		frame.add(number_right);
 		
 	}
@@ -382,12 +376,9 @@ public class Quiz extends Div {
 			for ( int i = 0; i < n; i++) {
 				int num = (int) Math.floor(Math.random() * (float) (n - i)); 
 				int selected = standardIndex[num];
-				System.out.println(selected);
-				System.out.println(randomizedIndexes);
 				randomizedIndexes.add(selected);
 				if (standardIndex.length > 0)
 					standardIndex = Arrays.stream(standardIndex).filter(value -> value != selected).toArray();
-				System.out.println(Arrays.toString(standardIndex));
 				
 			}
 

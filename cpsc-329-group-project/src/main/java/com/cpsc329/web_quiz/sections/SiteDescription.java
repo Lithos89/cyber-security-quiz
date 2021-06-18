@@ -15,6 +15,9 @@ public class SiteDescription extends Div {
 	
 	
 	public SiteDescription() {
+		
+		setClassName("centered-content");
+		
 		Div backgroundDiv = new Div();
 		backgroundDiv.addClassName("background");
 		
