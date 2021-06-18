@@ -104,6 +104,12 @@ img {
 	justify-content: center;
 }
 
+.feedback-label {
+	display: block;
+	padding: 2rem 0;
+	font-size: 1.3rem;
+}
+
 .question-number--label {
 	display: block;
 	text-align: center;
