@@ -133,6 +133,7 @@ public class Quiz extends Div {
 	Div frame = new Div();
 	Span textfield = new Span();
 	Span textarea = new Span();
+	Span feedback = new Span();
 	Button chooseA = new Button("A");
 	Button chooseB = new Button("B");
 	Button chooseC = new Button("C");
@@ -162,107 +163,42 @@ public class Quiz extends Div {
 		List<String[]> cleanOptions = Arrays.asList(optionsRaw);
 		List<Character> cleanAnswers = Arrays.asList(answersRaw);
 		
-		
-		
-		
 		questions  = RandomizeSet.randomize(cleanQuestions, randomizedIndexes);
 		options = RandomizeSet.randomize(cleanOptions, randomizedIndexes);
 		answers = RandomizeSet.randomize(cleanAnswers, randomizedIndexes);
 		
 //		Change frame background in css
-//		frame.getContentPane().setBackground(new Color(255,255,255));
 		frame.addClassName("game-frame");
 		
 		textfield.addClassName("question-number--label");
 		
 		textfield.getElement().setAttribute("contenteditable", false);
 		
-//		textfield.setWidth("650px");
-//		textfield.setHeight("50px");
-//		textfield.setBackground(new Color(15, 58, 109));
-//		textfield.setForeground(new Color(255,255,255));
-//		textfield.setFont(new Font("Tahoma", Font.PLAIN,25));
-//		textfield.setBorder(BorderFactory.createBevelBorder(1));
-//		textfield.setHorizontalAlignment(JTextField.CENTER);
-//		textfield.setEditable(false);
-		
 		textarea.addClassName("question-label");
 		
-//		textarea.setBounds(0,50,650,50);
-//		textarea.setWidth("650px");
-//		textarea.setHeight("50px");
-//		textarea.setLineWrap(true);
-//		textarea.setWrapStyleWord(true);
-//		textarea.setBackground(new Color(59, 89, 182));
-//		textarea.setForeground(new Color(255,255,255));
-//		textarea.setFont(new Font("Corbel", Font.BOLD,15));
-//		textarea.setBorder(BorderFactory.createBevelBorder(1));
-//		textarea.setEditable(false);
+		feedback.addClassName("question-label");
 		
-//		chooseA.setBounds(0,100,100,100);
 		chooseA.addClickListener(this::actionPerformed);
 		chooseA.addClassName("option");
-//		chooseA.setBackground(new Color(59, 89, 182));
-//        chooseA.setForeground(Color.WHITE);
-//        chooseA.setFocusPainted(false);
-//        chooseA.setFont(new Font("Corbel", Font.BOLD, 35));
-		
-//		chooseB.setBounds(0,200,100,100);
+
 		chooseB.addClickListener(this::actionPerformed);
 		chooseB.addClassName("option");
-//		chooseB.setBackground(new Color(59, 89, 182));
-//        chooseB.setForeground(Color.WHITE);
-//        chooseB.setFocusPainted(false);
-//        chooseB.setFont(new Font("Corbel", Font.BOLD, 35));
 		
-//		chooseC.setBounds(0,300,100,100);
 		chooseC.addClickListener(this::actionPerformed);
 		chooseC.addClassName("option");
-//		chooseC.setBackground(new Color(59, 89, 182));
-//        chooseC.setForeground(Color.WHITE);
-//        chooseC.setFocusPainted(false);
-//        chooseC.setFont(new Font("Corbel", Font.BOLD, 35));
 		
-//		chooseD.setBounds(0,400,100,100);
 		chooseD.addClickListener(this::actionPerformed);
 		chooseD.addClassName("option");
-//		chooseD.setBackground(new Color(59, 89, 182));
-//        chooseD.setForeground(Color.WHITE);
-//        chooseD.setFocusPainted(false);
-//        chooseD.setFont(new Font("Corbel", Font.BOLD, 35));
 		
 		answer_labelA.addClassName("option-label");
-//		answer_labelA.setBounds(125,100,500,100);
-//		answer_labelA.setBackground(new Color(50,50,50));
-//		answer_labelA.setForeground(new Color(51,204,255));
-//		answer_labelA.setFont(new Font("Corbel", Font.PLAIN, 20));
 
 		answer_labelB.addClassName("option-label");
-//		answer_labelB.setBounds(125,200,500,100);
-//		answer_labelB.setBackground(new Color(50,50,50));
-//		answer_labelB.setForeground(new Color(51,204,255));
-//		answer_labelB.setFont(new Font("Corbel", Font.PLAIN, 20));
-//		
+	
 		answer_labelC.addClassName("option-label");
-//		answer_labelC.setBounds(125,300,500,100);
-//		answer_labelC.setBackground(new Color(50,50,50));
-//		answer_labelC.setForeground(new Color(51,204,255));
-//		answer_labelC.setFont(new Font("Corbel", Font.PLAIN, 20));
-//		
+	
 		answer_labelD.addClassName("option-label");
-//		answer_labelD.setBounds(125,400,500,100);
-//		answer_labelD.setBackground(new Color(50,50,50));
-//		answer_labelD.setForeground(new Color(51,204,255));
-//		answer_labelD.setFont(new Font("Corbel", Font.PLAIN, 20));
-//
+
 		number_right.setClassName("score-display");
-//		number_right.setBounds(225,225,200,100);
-//		number_right.setBackground(new Color(25,25,25));
-//		number_right.setForeground(new Color(25,255,0));
-//		number_right.setFont(new Font("Corbel",Font.BOLD,50));
-//		number_right.setBorder(BorderFactory.createBevelBorder(1));
-//		number_right.setHorizontalAlignment(JTextField.CENTER);
-//		number_right.setEditable(false);
 		
 		nq.addClickListener(e -> {
 			answer_labelA.setClassName("answer--default");
@@ -403,14 +339,23 @@ public class Quiz extends Div {
 	
 	public void results() {
 		
-		frame.remove(optionA, optionB, optionC, optionD, textarea, nq);
+		frame.remove(optionA, optionB, optionC, optionD, nq);
 		
 		result = (int)((right_answers/(double)TQuestions)*100);
+		
+		if (result < 5)
+			feedback.setText("You need to review the Cybersecurity and Malware content more thoroughly and retry the quiz.");
+		else if(result < 10 && result > 5)
+			feedback.setText("You did well but there is always room for improvement.");
+		else if(result == 10)
+			feedback.setText("You did excellent!");
+		
 		
 		textfield.setText("Your Score");
 
 		number_right.setText("("+right_answers+"/"+TQuestions+")");
 		frame.add(number_right);
+		frame.add(feedback);
 		
 	}
 	
