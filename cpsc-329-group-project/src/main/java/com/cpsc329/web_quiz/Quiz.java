@@ -119,30 +119,28 @@ public class Quiz extends Div {
 						'C',
 						'B'
 		};
-	
-	//Facts
-	
+		
 	
 	char guess;
 	char answer;
 	int index;
-	int right_answers = 0;
+	int correctAnswers = 0;
 	int TQuestions = 10;
 	int result;
 	
 	Div frame = new Div();
-	Span textfield = new Span();
-	Span textarea = new Span();
+	Span heading = new Span();
+	Span body = new Span();
 	Span feedback = new Span();
 	Button chooseA = new Button("A");
 	Button chooseB = new Button("B");
 	Button chooseC = new Button("C");
 	Button chooseD = new Button("D");
-	Label answer_labelA = new Label(); 
-	Label answer_labelB = new Label();
-	Label answer_labelC = new Label();
-	Label answer_labelD = new Label();
-	Span number_right = new Span();
+	Label answerChoiceA = new Label(); 
+	Label answerChoiceB = new Label();
+	Label answerChoiceC = new Label();
+	Label answerChoiceD = new Label();
+	Span correctChoices = new Span();
 	Div optionA;
 	Div optionB;
 	Div optionC;
@@ -170,11 +168,11 @@ public class Quiz extends Div {
 //		Change frame background in css
 		frame.addClassName("game-frame");
 		
-		textfield.addClassName("question-number--label");
+		heading.addClassName("question-number--label");
 		
-		textfield.getElement().setAttribute("contenteditable", false);
+		heading.getElement().setAttribute("contenteditable", false);
 		
-		textarea.addClassName("question-label");
+		body.addClassName("question-label");
 		
 		feedback.addClassName("feedback-label");
 		
@@ -190,26 +188,26 @@ public class Quiz extends Div {
 		chooseD.addClickListener(this::actionPerformed);
 		chooseD.addClassName("option");
 		
-		answer_labelA.addClassName("option-label");
+		answerChoiceA.addClassName("option-label");
 
-		answer_labelB.addClassName("option-label");
+		answerChoiceB.addClassName("option-label");
 	
-		answer_labelC.addClassName("option-label");
+		answerChoiceC.addClassName("option-label");
 	
-		answer_labelD.addClassName("option-label");
+		answerChoiceD.addClassName("option-label");
 
-		number_right.setClassName("score-display");
+		correctChoices.setClassName("score-display");
 		
 		nq.addClickListener(e -> {
-			answer_labelA.setClassName("answer--default");
-			answer_labelB.setClassName("answer--default");
-			answer_labelC.setClassName("answer--default");
-			answer_labelD.setClassName("answer--default");
+			answerChoiceA.setClassName("answer--default");
+			answerChoiceB.setClassName("answer--default");
+			answerChoiceC.setClassName("answer--default");
+			answerChoiceD.setClassName("answer--default");
 			
-			answer_labelA.addClassName("option-label");
-			answer_labelB.addClassName("option-label");
-			answer_labelC.addClassName("option-label");
-			answer_labelD.addClassName("option-label");
+			answerChoiceA.addClassName("option-label");
+			answerChoiceB.addClassName("option-label");
+			answerChoiceC.addClassName("option-label");
+			answerChoiceD.addClassName("option-label");
 			
 			answer = ' ';
 			chooseA.setEnabled(true);
@@ -217,27 +215,27 @@ public class Quiz extends Div {
 			chooseC.setEnabled(true);
 			chooseD.setEnabled(true);
 			index++;
-			nextQuestion();
+			newQuestion();
 		});
 		
 		
 
 		
-		frame.add(textfield);
-		frame.add(textarea);
+		frame.add(heading);
+		frame.add(body);
 		
 		frame.add(feedback);
 		
-		optionA = new Div(answer_labelA, chooseA);
+		optionA = new Div(answerChoiceA, chooseA);
 		optionA.setClassName("option-container");
 		
-		optionB = new Div(answer_labelB, chooseB);
+		optionB = new Div(answerChoiceB, chooseB);
 		optionB.setClassName("option-container");
 		
-		optionC = new Div(answer_labelC, chooseC);
+		optionC = new Div(answerChoiceC, chooseC);
 		optionC.setClassName("option-container");
 		
-		optionD = new Div(answer_labelD, chooseD);
+		optionD = new Div(answerChoiceD, chooseD);
 		optionD.setClassName("option-container");
 		
 		frame.add(optionA);
@@ -249,61 +247,60 @@ public class Quiz extends Div {
 		frame.setVisible(true);
 		
 		
-		nextQuestion();
+		newQuestion();
 		
 		add(frame);
 		
 	}
-	public void nextQuestion() {
+	public void newQuestion() {
 		
 		if(index >= TQuestions) {
-			results();
+			finalScore();
 		}
 		
 		else {
-			textfield.setText("QUESTION " + (index+1));
-			textarea.setText(questions.get(index));
-			answer_labelA.setText(options.get(index)[0]);
-			answer_labelB.setText(options.get(index)[1]);
-			answer_labelC.setText(options.get(index)[2]);
-			answer_labelD.setText(options.get(index)[3]);
+			heading.setText("QUESTION " + (index+1));
+			body.setText(questions.get(index));
+			answerChoiceA.setText(options.get(index)[0]);
+			answerChoiceB.setText(options.get(index)[1]);
+			answerChoiceC.setText(options.get(index)[2]);
+			answerChoiceD.setText(options.get(index)[3]);
 
 		}
 	}
-	public void actionPerformed(ClickEvent<Button> e) {
+	public void actionPerformed(ClickEvent<Button> click) {
 		
 		chooseA.setEnabled(false);
 		chooseB.setEnabled(false);
 		chooseC.setEnabled(false);
 		chooseD.setEnabled(false);
 		
-		if(e.getSource() == chooseA) {
+		if(click.getSource() == chooseA) {
 			answer = 'A';
 			if(answer == answers.get(index)) {
-				right_answers++;
-				//answer_labelA.setForeground(new Color(255,0,0));
+				correctAnswers++;
 			}
 		}
 
-		if(e.getSource() == chooseB) {
+		if(click.getSource() == chooseB) {
 			answer = 'B';
 			if(answer == answers.get(index)) {
-				right_answers++;
+				correctAnswers++;
 			}
 		}
 		
-		if(e.getSource() == chooseC) {
+		if(click.getSource() == chooseC) {
 			answer = 'C';
 			if(answer == answers.get(index)) {
-				right_answers++;
+				correctAnswers++;
 			}
 		}
 		
-		if(e.getSource() == chooseD) {
+		if(click.getSource() == chooseD) {
 			answer = 'D';
 
 			if(answer == answers.get(index)) {
-				right_answers++;			
+				correctAnswers++;			
 				
 			}
 		}
@@ -318,45 +315,45 @@ public class Quiz extends Div {
 		chooseD.setEnabled(false);
 		
 		if(answers.get(index) == 'A')
-			answer_labelA.addClassName("answer--correct");
+			answerChoiceA.addClassName("answer--correct");
 		else if (answers.get(index) != 'A' && answer != answers.get(index))
-			answer_labelA.addClassName("answer--incorrect");
+			answerChoiceA.addClassName("answer--incorrect");
 		
 		if(answers.get(index) == 'B')
-			answer_labelB.addClassName("answer--correct");
+			answerChoiceB.addClassName("answer--correct");
 		else if (answers.get(index) != 'B' && answer != answers.get(index))
-			answer_labelB.addClassName("answer--incorrect");
+			answerChoiceB.addClassName("answer--incorrect");
 		
 		if(answers.get(index) == 'C')
-			answer_labelC.addClassName("answer--correct");
+			answerChoiceC.addClassName("answer--correct");
 		else if (answers.get(index) != 'C' && answer != answers.get(index)) 
-			answer_labelC.addClassName("answer--incorrect");
+			answerChoiceC.addClassName("answer--incorrect");
 		
 		if(answers.get(index) == 'D')
-			answer_labelD.addClassName("answer--correct");
+			answerChoiceD.addClassName("answer--correct");
 		else if (answers.get(index) != 'D' && answer != answers.get(index))
-			answer_labelD.addClassName("answer--incorrect");
+			answerChoiceD.addClassName("answer--incorrect");
 		
 	}
 	
-	public void results() {
+	public void finalScore() {
 		
-		frame.remove(optionA, optionB, optionC, optionD, nq, textarea);
+		frame.remove(optionA, optionB, optionC, optionD, nq, body);
 		
-		result = (int)((right_answers/(double)TQuestions)*100);
+		result = (int)((correctAnswers/(double)TQuestions)*100);
 		
-		if (right_answers < 5)
+		if (correctAnswers < 5)
 			feedback.setText("You need to review the Cybersecurity and Malware content more thoroughly and retry the quiz.");
-		else if(right_answers < 10 && result > 5)
+		else if(correctAnswers < 10 && result > 5)
 			feedback.setText("You did well but there is always room for improvement.");
-		else if(right_answers == 10)
+		else if(correctAnswers == 10)
 			feedback.setText("You did excellent!");
 		
 		
-		textfield.setText("Your Score");
+		heading.setText("Your Score");
 
-		number_right.setText("("+right_answers+"/"+TQuestions+")");
-		frame.add(number_right);		
+		correctChoices.setText("("+correctAnswers+"/"+TQuestions+")");
+		frame.add(correctChoices);		
 	}
 	
 	public static class RandomizeSet {
